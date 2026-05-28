@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font: 14px system-ui, sans-serif;
+      padding: 20px;
+      max-width: 340px;
+      background: #1e1e1e;
+      color: #e8e8e8;
+      margin: 0;
+    }
+    h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #888;
+      margin: 20px 0 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #333;
+    }
+    h3:first-of-type { margin-top: 0; }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .row label { cursor: pointer; flex: 1; }
+    input[type=checkbox] { width: 15px; height: 15px; cursor: pointer; flex-shrink: 0; }
+    select {
+      background: #2a2a2a;
+      color: #e8e8e8;
+      border: 1px solid #555;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 13px;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+    .note { font-size: 11px; color: #666; margin: -4px 0 10px 0; }
+    button {
+      margin-top: 16px;
+      padding: 6px 18px;
+      background: #2a2a2a;
+      color: #e8e8e8;
+      border: 1px solid #555;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    button:hover { background: #333; }
+    #saved { margin-left: 10px; font-size: 12px; color: #7c7; opacity: 0; transition: opacity 0.3s; }
+  </style>
+</head>
+<body>
+  <h3>Trigger</h3>
+  <div class="row">
+    <input type="checkbox" id="requireAlt">
+    <label for="requireAlt">Require Alt key with double-click</label>
+  </div>
+
+  <h3>Theme</h3>
+  <select id="theme">
+    <option value="dark">Dark</option>
+    <option value="light">Light</option>
+    <option value="sepia">Sepia</option>
+  </select>
+
+  <h3>Synonyms</h3>
+  <select id="synonyms">
+    <option value="off">Off</option>
+    <option value="prompt">Show on demand (link in popup)</option>
+    <option value="always">Always show</option>
+  </select>
+  <p class="note">Scope — which synonyms to show:</p>
+  <select id="synScope">
+    <option value="word">Whole word (one list at the bottom)</option>
+    <option value="definition">Per definition block</option>
+  </select>
+
+  <h3>Pronunciation</h3>
+  <div class="row">
+    <input type="checkbox" id="showPhonetic">
+    <label for="showPhonetic">Show phonetic spelling <span style="color:#666;font-size:11px">(e.g. /bəˈsɪk/)</span></label>
+  </div>
+  <div class="row">
+    <input type="checkbox" id="showAudio">
+    <label for="showAudio">Show audio button (plays on click)</label>
+  </div>
+  <p class="note">Audio only loads when you click the button — no idle cost.</p>
+
+  <button id="save">Save</button>
+  <span id="saved">Saved</span>
+
+  <script src="options.js"></script>
+</body>
+</html>

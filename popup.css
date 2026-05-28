@@ -1,0 +1,105 @@
+.__dict_popup__ {
+  all: initial;
+  position: absolute;
+  z-index: 2147483647;
+  width: 300px;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font: 13px/1.5 system-ui, sans-serif;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  pointer-events: auto;
+}
+
+/* ── Themes ── */
+.__dict_popup__[data-dp-theme="dark"] {
+  background: #1e1e1e;
+  color: #e8e8e8;
+  border: 1px solid #444;
+}
+.__dict_popup__[data-dp-theme="light"] {
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.__dict_popup__[data-dp-theme="sepia"] {
+  background: #f4efe4;
+  color: #3b2f1e;
+  border: 1px solid #c8b89a;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* ── Header ── */
+.__dict_popup__ .dp-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.__dict_popup__ .dp-word {
+  font-size: 15px;
+  font-weight: 700;
+}
+.__dict_popup__[data-dp-theme="dark"]  .dp-word { color: #fff; }
+.__dict_popup__[data-dp-theme="light"] .dp-word { color: #000; }
+.__dict_popup__[data-dp-theme="sepia"] .dp-word { color: #2a1f0e; }
+
+.__dict_popup__ .dp-phonetic {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.__dict_popup__ .dp-audio-btn {
+  all: initial;
+  font-size: 11px;
+  cursor: pointer;
+  opacity: 0.55;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+  line-height: 1.4;
+}
+.__dict_popup__ .dp-audio-btn:hover { opacity: 1; }
+
+/* ── Part of speech ── */
+.__dict_popup__ .dp-pos {
+  font-size: 11px;
+  font-style: italic;
+  opacity: 0.5;
+  margin-top: 6px;
+  margin-bottom: 2px;
+}
+
+/* ── Definition ── */
+.__dict_popup__ .dp-def {
+  font-size: 13px;
+  margin-left: 4px;
+  margin-bottom: 2px;
+}
+
+/* ── Synonyms ── */
+.__dict_popup__ .dp-syns {
+  font-size: 12px;
+  opacity: 0.65;
+  font-style: italic;
+  margin-top: 3px;
+  margin-left: 4px;
+}
+
+.__dict_popup__ .dp-syn-link {
+  font-size: 11px;
+  opacity: 0.45;
+  cursor: pointer;
+  margin-top: 3px;
+  margin-left: 4px;
+  text-decoration: underline;
+  display: inline-block;
+}
+.__dict_popup__ .dp-syn-link:hover { opacity: 0.8; }
+
+/* ── Loading state ── */
+.__dict_popup__.dp-loading {
+  font-size: 13px;
+  opacity: 0.6;
+}

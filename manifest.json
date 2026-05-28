@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Dict Popup",
+  "version": "1.0",
+  "description": "Double-click any word for an instant Wiktionary definition.",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["popup.css"]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": false,
+    "open_in_tab": true
+  },
+  "permissions": ["storage", "https://api.dictionaryapi.dev/*"]
+}
