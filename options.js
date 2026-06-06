@@ -7,26 +7,34 @@ const defaults = {
   showAudio: false
 };
 
-browser.storage.local.get(defaults).then(prefs => {
-  document.getElementById("requireAlt").checked   = prefs.requireAlt;
-  document.getElementById("theme").value          = prefs.theme;
-  document.getElementById("synonyms").value       = prefs.synonyms;
-  document.getElementById("synScope").value       = prefs.synScope;
-  document.getElementById("showPhonetic").checked = prefs.showPhonetic;
-  document.getElementById("showAudio").checked    = prefs.showAudio;
-});
+function saveOptions() {
+  const prefs = {
+    requireAlt: document.getElementById('requireAlt').checked,
+    theme: document.getElementById('theme').value,
+    synonyms: document.getElementById('synonyms').value,
+    synScope: document.getElementById('synScope').value,
+    showPhonetic: document.getElementById('showPhonetic').checked,
+    showAudio: document.getElementById('showAudio').checked
+  };
 
-document.getElementById("save").addEventListener("click", () => {
-  browser.storage.local.set({
-    requireAlt:   document.getElementById("requireAlt").checked,
-    theme:        document.getElementById("theme").value,
-    synonyms:     document.getElementById("synonyms").value,
-    synScope:     document.getElementById("synScope").value,
-    showPhonetic: document.getElementById("showPhonetic").checked,
-    showAudio:    document.getElementById("showAudio").checked,
-  }).then(() => {
-    const s = document.getElementById("saved");
-    s.style.opacity = 1;
-    setTimeout(() => s.style.opacity = 0, 1500);
+  browser.storage.local.set(prefs).then(() => {
+    const status = document.getElementById('status');
+    status.textContent = 'Settings saved.';
+    document.body.setAttribute('data-theme', prefs.theme);
+    setTimeout(() => { status.textContent = ''; }, 2000);
   });
-});
+}
+
+function restoreOptions() {
+  browser.storage.local.get(defaults).then(prefs => {
+    Object.keys(prefs).forEach(key => {
+      const el = document.getElementById(key);
+      if (el.type === 'checkbox') el.checked = prefs[key];
+      else el.value = prefs[key];
+    });
+    document.body.setAttribute('data-theme', prefs.theme);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', restoreOptions);
+document.querySelectorAll('input, select').forEach(el => el.addEventListener('change', saveOptions));

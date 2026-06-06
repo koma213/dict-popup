@@ -1,0 +1,20 @@
+# Build artifacts and releases
+*.zip
+*.xpi
+*.7z
+*.crx
+
+# Dev/temp files
+backup/
+troubleshooting_summary.txt
+GEMINI.md
+build.ps1
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp

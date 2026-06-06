@@ -10,6 +10,9 @@
   pointer-events: auto;
 }
 
+/* ── Accent ── */
+.__dict_popup__ { --dp-accent: #eb8860; }
+
 /* ── Themes ── */
 .__dict_popup__[data-dp-theme="dark"] {
   background: #1e1e1e;
@@ -54,10 +57,11 @@
   all: initial;
   font-size: 11px;
   cursor: pointer;
-  opacity: 0.55;
+  color: var(--dp-accent);
+  opacity: 0.75;
   padding: 1px 5px;
   border-radius: 3px;
-  border: 1px solid currentColor;
+  border: 1px solid var(--dp-accent);
   line-height: 1.4;
 }
 .__dict_popup__ .dp-audio-btn:hover { opacity: 1; }
@@ -66,7 +70,7 @@
 .__dict_popup__ .dp-pos {
   font-size: 11px;
   font-style: italic;
-  opacity: 0.5;
+  color: var(--dp-accent);
   margin-top: 6px;
   margin-bottom: 2px;
 }
@@ -89,14 +93,15 @@
 
 .__dict_popup__ .dp-syn-link {
   font-size: 11px;
-  opacity: 0.45;
+  color: var(--dp-accent);
+  opacity: 0.85;
   cursor: pointer;
   margin-top: 3px;
   margin-left: 4px;
   text-decoration: underline;
   display: inline-block;
 }
-.__dict_popup__ .dp-syn-link:hover { opacity: 0.8; }
+.__dict_popup__ .dp-syn-link:hover { opacity: 1; }
 
 /* ── Loading state ── */
 .__dict_popup__.dp-loading {

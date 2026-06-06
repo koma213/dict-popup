@@ -82,7 +82,10 @@
         btn.textContent = "▶";
         btn.addEventListener("click", e => {
           e.stopPropagation();
-          new Audio(audioUrl).play();
+          new Audio(audioUrl).play().catch(() => {
+            btn.textContent = "✖";
+            setTimeout(() => { btn.textContent = "▶"; }, 2000);
+          });
         });
         header.appendChild(btn);
       }
@@ -144,7 +147,7 @@
       const sy = window.scrollY;
 
       let left = x + sx;
-      let top  = y + sy + 18;
+      let top  = y + sy + 22; // Added slight offset to clear the cursor
 
       if (left + pw > vw + sx) left = vw + sx - pw - 8;
       if (top  + ph > vh + sy) top  = y  + sy - ph - 8;
@@ -165,13 +168,16 @@
 
     Promise.all([
       getPrefs(),
-      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`).then(r => r.json())
-    ]).then(([prefs, data]) => {
+      browser.runtime.sendMessage({ type: "fetchDefinition", word: word })
+    ]).then(([prefs, response]) => {
       if (!document.getElementById(placeholderId)) return;
 
+      const data = response?.data;
       if (!Array.isArray(data) || !data[0]?.meanings?.length) {
-        placeholder.textContent = `No definition found for "${word}"`;
+        placeholder.textContent = `No definition found.`;
+        placeholder.classList.remove('dp-loading');
         placeholder.setAttribute("data-dp-theme", prefs.theme);
+        setTimeout(() => { if (placeholder) placeholder.remove(); }, 2500);
         return;
       }
 
@@ -186,7 +192,8 @@
   document.addEventListener("dblclick", e => {
     getPrefs().then(prefs => {
       if (prefs.requireAlt && !e.altKey) return;
-      const word = (window.getSelection()?.toString().trim() || "").replace(/[^a-zA-Z'-]/g, "");
+      // Improved regex to support Unicode/accented characters
+      const word = (window.getSelection()?.toString().trim() || "").replace(/[^\p{L}\p{M}'-]/gu, "");
       if (!word) return;
       if (!isInsideAnyPopup(e.target)) removeAllPopups();
       showPopup(word, e.clientX, e.clientY);

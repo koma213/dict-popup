@@ -1,11 +1,21 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Dict Popup",
-  "version": "1.0",
-  "description": "Double-click any word for an instant Wiktionary definition.",
-  "background": {
-    "scripts": ["background.js"]
+  "version": "1.0.4",
+  "description": "Lightweight Firefox extension that shows inline Wiktionary definitions.",
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
   },
+  "host_permissions": [
+    "https://api.dictionaryapi.dev/*"
+  ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -13,10 +23,19 @@
       "css": ["popup.css"]
     }
   ],
+  "background": {
+    "scripts": ["background.js"]
+  },
   "options_ui": {
     "page": "options.html",
-    "browser_style": false,
     "open_in_tab": true
   },
-  "permissions": ["storage", "https://api.dictionaryapi.dev/*"]
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "dict-popup@koma213.com",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
 }
