@@ -1,8 +1,10 @@
 # Dict Popup
 
-A lightweight Firefox extension that shows instant word definitions in a clean inline popup — just double-click any word on any page.
+A lightweight Firefox extension that shows instant word definitions in a clean inline popup — just double-click any word on any page. 
 
-Powered by the [Free Dictionary API](https://dictionaryapi.dev/), which is Wiktionary-backed. This means broad coverage including obscure, archaic, and technical words that most dictionary extensions miss.
+I started this project because I was unsatisfied with all other inline dictionary extensions due to either privacy, limited or curated set of definitions or just overall boat. This attempts to solve those factors.
+
+Powered by the [Free Dictionary API](https://dictionaryapi.dev/), which is Wiktionary-backed. This means broad coverage including obscure, archaic, and technical words that most dictionary extensions miss. 
 
 ---
 
@@ -38,7 +40,7 @@ Dict Popup collects and transmits **no personal data**. The only network request
 
 ### Signed .xpi (recommended)
 
-Download the latest signed release from the [Releases page](https://github.com/koma213/dict-popup/releases) and drag the `.xpi` file onto any Firefox window. Because it's Mozilla-signed it installs permanently and survives restarts.
+Download the latest signed release from the [Releases page](https://github.com/koma213/dict-popup/releases) and drag the `.xpi` file onto any Firefox window. Mozilla signed!
 
 ### Manual / Developer Install
 
