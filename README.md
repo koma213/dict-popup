@@ -2,7 +2,7 @@
 
 A lightweight Firefox extension that shows instant word definitions in a clean inline popup — just double-click any word on any page. 
 
-I started this project because I was unsatisfied with all other inline dictionary extensions due to either privacy, limited or curated set of definitions or just overall boat. This attempts to solve those factors.
+I started this project because I was unsatisfied with all other inline dictionary extensions due to either privacy, limited or curated set of definitions or just overall bloat. This attempts to solve those factors.
 
 Powered by the [Free Dictionary API](https://dictionaryapi.dev/), which is Wiktionary-backed. This means broad coverage including obscure, archaic, and technical words that most dictionary extensions miss. 
 
